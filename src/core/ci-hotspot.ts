@@ -987,6 +987,16 @@ export class CIHotspot implements CIHotspotInstance {
 
   goToScene(sceneId: string): void {
     if (this.destroyed) return;
+
+    // When onNavigate is set, delegate scene switching entirely to the host.
+    // Checked early (before isTransitioning/scenesMap/currentScene guards)
+    // because the host may manage scenes the plugin doesn't know about.
+    // All internal navigation (transition, onSceneChange) is skipped.
+    if (this.config.onNavigate) {
+      this.config.onNavigate(sceneId);
+      return;
+    }
+
     if (this.isTransitioning) return;
     if (!this.scenesMap.size) return;
     if (sceneId === this.currentSceneId) return;

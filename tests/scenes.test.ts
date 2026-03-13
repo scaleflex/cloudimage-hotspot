@@ -673,4 +673,63 @@ describe('Slide direction from arrowDirection', () => {
     // Should use arrowDirection (right/normal), not x-position (which would give reverse)
     expect(inClasses).toEqual(['ci-hotspot-scene-slide-in']);
   });
+
+});
+
+describe('onNavigate callback', () => {
+  let root: HTMLElement;
+
+  beforeEach(() => {
+    root = document.createElement('div');
+    document.body.appendChild(root);
+  });
+
+  afterEach(() => {
+    root.remove();
+  });
+
+  it('fires onNavigate with the target scene ID', () => {
+    const onNavigate = vi.fn();
+    const instance = new CIHotspot(root, makeScenesConfig({ onNavigate }));
+    instance.goToScene('scene-b');
+    expect(onNavigate).toHaveBeenCalledWith('scene-b');
+    instance.destroy();
+  });
+
+  it('skips internal navigation when onNavigate is set', () => {
+    const onNavigate = vi.fn();
+    const instance = new CIHotspot(root, makeScenesConfig({ onNavigate }));
+    instance.goToScene('scene-b');
+    // Image should still show scene-a
+    const img = root.querySelector('.ci-hotspot-image') as HTMLImageElement;
+    expect(img.src).toContain('a.jpg');
+    expect(instance.getCurrentScene()).toBe('scene-a');
+    instance.destroy();
+  });
+
+  it('does not fire onSceneChange when onNavigate is set', () => {
+    const onNavigate = vi.fn();
+    const onSceneChange = vi.fn();
+    const instance = new CIHotspot(root, makeScenesConfig({ onNavigate, onSceneChange }));
+    instance.goToScene('scene-b');
+    expect(onNavigate).toHaveBeenCalledOnce();
+    expect(onSceneChange).not.toHaveBeenCalled();
+    instance.destroy();
+  });
+
+  it('fires onNavigate even for unknown scene IDs', () => {
+    const onNavigate = vi.fn();
+    const instance = new CIHotspot(root, makeScenesConfig({ onNavigate }));
+    instance.goToScene('nonexistent');
+    expect(onNavigate).toHaveBeenCalledWith('nonexistent');
+    instance.destroy();
+  });
+
+  it('does not fire onNavigate after destroy', () => {
+    const onNavigate = vi.fn();
+    const instance = new CIHotspot(root, makeScenesConfig({ onNavigate }));
+    instance.destroy();
+    instance.goToScene('scene-b');
+    expect(onNavigate).not.toHaveBeenCalled();
+  });
 });

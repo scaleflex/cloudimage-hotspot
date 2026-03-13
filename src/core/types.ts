@@ -170,6 +170,17 @@ export interface CIHotspotConfig {
   zoomControlsPosition?: ZoomControlsPosition;
   /** Called when fullscreen state changes */
   onFullscreenChange?: (isFullscreen: boolean) => void;
+  /**
+   * Called when a navigateTo hotspot is activated or `goToScene()` is called.
+   * When set, the plugin fires this callback and skips **all** internal scene
+   * navigation (transition, marker swap, `onSceneChange`), allowing the host
+   * application to handle scene switching entirely.
+   *
+   * Note: the callback fires even during a transition or for unknown scene IDs,
+   * since the host may manage scenes the plugin doesn't know about.
+   * Avoid calling `goToScene()` inside this handler to prevent infinite loops.
+   */
+  onNavigate?: (targetSceneId: string) => void;
 }
 
 /** Instance methods returned by CIHotspot */

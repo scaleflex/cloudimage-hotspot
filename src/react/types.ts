@@ -29,6 +29,7 @@ export interface CIHotspotViewerProps {
   onSceneChange?: (sceneId: string, scene: Scene) => void;
   fullscreenButton?: boolean;
   onFullscreenChange?: (isFullscreen: boolean) => void;
+  onNavigate?: (targetSceneId: string) => void;
   className?: string;
   style?: CSSProperties;
 }
