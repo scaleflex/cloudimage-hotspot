@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.8] - 2026-03-21
+
+### Added
+
+- Per-marker `markerTheme` override — individual hotspots can now set `markerTheme: 'default' | 'inverted' | 'brand'` to override the container-level theme
+- `markerTheme: 'default'` reset allows markers to opt out of a container-level inverted/brand theme
+
+### Fixed
+
+- `brandColor` CSS variable is now always set when provided, so per-marker `markerTheme: 'brand'` works even when the container theme is not brand
+- Deduplicated container-level and per-marker theme CSS rules into shared selectors
+
 ## [1.1.7] - 2026-03-18
 
 ### Fixed
@@ -62,6 +74,7 @@ All notable changes to this project will be documented in this file.
 - **Zero runtime dependencies**
 - **Output formats** — ESM, CJS, and UMD bundles with full TypeScript declarations
 
+[1.1.8]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.8
 [1.1.7]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.7
 [1.1.6]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.6
 [1.1.5]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.5

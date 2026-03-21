@@ -59,7 +59,7 @@ npm install js-cloudimage-hotspot
 ### CDN
 
 ```html
-<script src="https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/1.1.7/js-cloudimage-hotspot.min.js?vh=ffadcf&func=proxy"></script>
+<script src="https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/1.1.8/js-cloudimage-hotspot.min.js?func=proxy"></script>
 ```
 
 ## Quick Start
