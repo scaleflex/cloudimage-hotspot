@@ -1,8 +1,8 @@
-# Implementation Record: js-cloudimage-hotspot
+# Implementation Record: @cloudimage/hotspot
 
 ## Summary
 
-Built `js-cloudimage-hotspot` from scratch — a zero-dependency TypeScript library for interactive image hotspots with zoom, popovers, and WCAG 2.1 AA accessibility. All 10 phases completed successfully, followed by 23 post-implementation updates through v1.0.1.
+Built `@cloudimage/hotspot` from scratch — a zero-dependency TypeScript library for interactive image hotspots with zoom, popovers, and WCAG 2.1 AA accessibility. All 10 phases completed successfully, followed by 23 post-implementation updates through v1.0.1.
 
 ## Actual Metrics
 
@@ -399,7 +399,7 @@ After the initial 10-phase implementation, several refinements and fixes were ap
 #### Results
 - Visual editor fully functional: click image to place markers, drag to reposition, edit properties in sidebar
 - Keyboard shortcuts: `A` (add mode), `V` (select mode), `Delete` (remove), `Escape` (deselect/exit add mode), `Ctrl+Z` / `Ctrl+Shift+Z` (undo/redo)
-- Editor ships as separate entry point (`js-cloudimage-hotspot/editor`) — core bundle unaffected
+- Editor ships as separate entry point (`@cloudimage/hotspot/editor`) — core bundle unaffected
 - All editor tests passing
 
 ---
@@ -452,7 +452,7 @@ After the initial 10-phase implementation, several refinements and fixes were ap
 | `demo/react-demo/app.tsx` | Modified | Updated React demo to use real estate photography |
 
 #### Results
-- All demos use `https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/spacejoy-unsplash.jpg`
+- All demos use `https://scaleflex.cloudimg.io/v7/plugins/@cloudimage/hotspot/spacejoy-unsplash.jpg`
 - Hotspot labels are descriptive and match the image content
 
 ---
@@ -643,20 +643,20 @@ Made `src` and `hotspots` optional in `CIHotspotConfig` so scenes-only configs d
 |------|--------|-------------|
 | `examples/vanilla/index.html` | Created | Vanilla JS CodeSandbox example with Vite dev server |
 | `examples/vanilla/index.js` | Created | Vanilla example: imports CIHotspot, creates viewer with 3 hotspots |
-| `examples/vanilla/package.json` | Created | Dependencies: js-cloudimage-hotspot, vite |
+| `examples/vanilla/package.json` | Created | Dependencies: @cloudimage/hotspot, vite |
 | `examples/vanilla/vite.config.js` | Created | Vite config with `allowedHosts` for CodeSandbox |
 | `examples/vanilla/sandbox.config.json` | Created | CodeSandbox configuration |
 | `examples/react/index.html` | Created | React CodeSandbox example entry |
 | `examples/react/src/App.jsx` | Created | React example: CIHotspotViewer with ref API |
 | `examples/react/src/index.jsx` | Created | React example mount |
-| `examples/react/package.json` | Created | Dependencies: js-cloudimage-hotspot, react, react-dom, vite |
+| `examples/react/package.json` | Created | Dependencies: @cloudimage/hotspot, react, react-dom, vite |
 | `examples/react/vite.config.js` | Created | Vite config with `allowedHosts` for CodeSandbox |
 | `examples/react/sandbox.config.json` | Created | CodeSandbox configuration |
 | `CHANGELOG.md` | Created | v1.0.0 changelog |
 | `.github/workflows/deploy-demo.yml` | Created | GitHub Actions: build demo and deploy to gh-pages |
 | `.github/workflows/deploy-pages.yml` | Created | GitHub Pages build workflow |
-| `dist/js-cloudimage-hotspot.min.js` | Added | Committed UMD bundle for CDN distribution |
-| `dist/editor/js-cloudimage-hotspot-editor.min.js` | Added | Committed editor UMD bundle for CDN |
+| `dist/@cloudimage/hotspot.min.js` | Added | Committed UMD bundle for CDN distribution |
+| `dist/editor/@cloudimage/hotspot-editor.min.js` | Added | Committed editor UMD bundle for CDN |
 | `.gitignore` | Modified | Excluded most dist/ files but kept committed UMD bundles |
 | `config/vite.demo.config.ts` | Modified | Added editor.html as multi-page entry |
 | `package.json` | Modified | Added repository, bugs, homepage, author, keywords fields |
@@ -888,7 +888,7 @@ Made `src` and `hotspots` optional in `CIHotspotConfig` so scenes-only configs d
 | `demo/index.html` | Modified | CDN URL updated to `1.0.1` |
 
 #### Results
-- All CDN references point to `https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/1.0.1/js-cloudimage-hotspot.min.js`
+- All CDN references point to `https://scaleflex.cloudimg.io/v7/plugins/@cloudimage/hotspot/1.0.1/@cloudimage/hotspot.min.js`
 - Package version is `1.0.1`
 
 ---

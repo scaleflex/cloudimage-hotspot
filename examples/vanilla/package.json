@@ -1,14 +1,14 @@
 {
-  "name": "js-cloudimage-hotspot-vanilla-example",
+  "name": "@cloudimage/hotspot-vanilla-example",
   "private": true,
   "version": "0.0.0",
-  "description": "Vanilla JS example for js-cloudimage-hotspot",
+  "description": "Vanilla JS example for @cloudimage/hotspot",
   "scripts": {
     "dev": "vite",
     "start": "vite"
   },
   "dependencies": {
-    "js-cloudimage-hotspot": "^1.0.0"
+    "@cloudimage/hotspot": "^1.0.0"
   },
   "devDependencies": {
     "vite": "^5.4.0"

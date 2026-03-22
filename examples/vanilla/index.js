@@ -1,4 +1,4 @@
-import CIHotspot from 'js-cloudimage-hotspot';
+import CIHotspot from '@cloudimage/hotspot';
 
 var viewer = new CIHotspot('#viewer', {
   src: 'https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/spacejoy-unsplash.jpg',

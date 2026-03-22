@@ -8,9 +8,9 @@ export default defineConfig({
       name: 'CIHotspotEditor',
       formats: ['es', 'cjs', 'umd'],
       fileName: (format) => {
-        if (format === 'es') return 'js-cloudimage-hotspot-editor.esm.js';
-        if (format === 'cjs') return 'js-cloudimage-hotspot-editor.cjs.js';
-        return 'js-cloudimage-hotspot-editor.min.js';
+        if (format === 'es') return 'hotspot-editor.esm.js';
+        if (format === 'cjs') return 'hotspot-editor.cjs.js';
+        return 'hotspot-editor.min.js';
       },
     },
     outDir: resolve(__dirname, '../dist/editor'),

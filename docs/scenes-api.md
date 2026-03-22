@@ -185,4 +185,4 @@ Five real estate scenes for the demo tour:
 | Bedroom | `andrea-davis-4.jpg?vh=319871` | 2000x1333 |
 | Rest Zone | `andrea-davis-1.jpg?vh=8c0c49` | 1331x2000 |
 
-Base URL: `https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/`
+Base URL: `https://scaleflex.cloudimg.io/v7/plugins/@cloudimage/hotspot/`

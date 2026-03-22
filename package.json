@@ -1,26 +1,26 @@
 {
-  "name": "js-cloudimage-hotspot",
+  "name": "@cloudimage/hotspot",
   "version": "1.1.11",
   "description": "Interactive image hotspots with zoom, popovers, and accessibility",
   "license": "MIT",
   "author": "Scaleflex",
-  "homepage": "https://github.com/scaleflex/js-cloudimage-hotspot#readme",
+  "homepage": "https://github.com/scaleflex/cloudimage-hotspot#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scaleflex/js-cloudimage-hotspot.git"
+    "url": "git+https://github.com/scaleflex/cloudimage-hotspot.git"
   },
   "bugs": {
-    "url": "https://github.com/scaleflex/js-cloudimage-hotspot/issues"
+    "url": "https://github.com/scaleflex/cloudimage-hotspot/issues"
   },
-  "main": "dist/js-cloudimage-hotspot.cjs.js",
-  "module": "dist/js-cloudimage-hotspot.esm.js",
-  "unpkg": "dist/js-cloudimage-hotspot.min.js",
+  "main": "dist/hotspot.cjs.js",
+  "module": "dist/hotspot.esm.js",
+  "unpkg": "dist/hotspot.min.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/js-cloudimage-hotspot.esm.js",
-      "require": "./dist/js-cloudimage-hotspot.cjs.js"
+      "import": "./dist/hotspot.esm.js",
+      "require": "./dist/hotspot.cjs.js"
     },
     "./react": {
       "types": "./dist/react/index.d.ts",
@@ -29,8 +29,8 @@
     },
     "./editor": {
       "types": "./dist/editor/index.d.ts",
-      "import": "./dist/editor/js-cloudimage-hotspot-editor.esm.js",
-      "require": "./dist/editor/js-cloudimage-hotspot-editor.cjs.js"
+      "import": "./dist/editor/hotspot-editor.esm.js",
+      "require": "./dist/editor/hotspot-editor.cjs.js"
     }
   },
   "files": [

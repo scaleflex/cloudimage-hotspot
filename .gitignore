@@ -5,12 +5,12 @@
 
 # build output — only CDN bundles are tracked
 /dist/*
-!/dist/js-cloudimage-hotspot.min.js
-!/dist/js-cloudimage-hotspot.min.js.map
+!/dist/hotspot.min.js
+!/dist/hotspot.min.js.map
 !/dist/editor/
 /dist/editor/*
-!/dist/editor/js-cloudimage-hotspot-editor.min.js
-!/dist/editor/js-cloudimage-hotspot-editor.min.js.map
+!/dist/editor/hotspot-editor.min.js
+!/dist/editor/hotspot-editor.min.js.map
 /dist-demo
 
 # testing

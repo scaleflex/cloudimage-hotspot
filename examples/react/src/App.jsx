@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { CIHotspotViewer } from 'js-cloudimage-hotspot/react';
+import { CIHotspotViewer } from '@cloudimage/hotspot/react';
 
 const hotspots = [
   {

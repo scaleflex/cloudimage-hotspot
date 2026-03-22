@@ -2,29 +2,29 @@
   <img src="https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-360-view/logo_scaleflex_on_white_bg.jpg?vh=91b12d&w=700" alt="Scaleflex" width="350">
 </p>
 
-<h1 align="center">js-cloudimage-hotspot</h1>
+<h1 align="center">@cloudimage/hotspot</h1>
 
 <p align="center">
   Interactive image hotspots with zoom, popovers, and accessibility. Zero dependencies.
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/js-cloudimage-hotspot"><img src="https://img.shields.io/npm/v/js-cloudimage-hotspot.svg?style=flat-square" alt="npm version"></a>
-  <a href="https://www.npmjs.com/package/js-cloudimage-hotspot"><img src="https://img.shields.io/npm/dm/js-cloudimage-hotspot.svg?style=flat-square" alt="npm downloads"></a>
-  <a href="https://github.com/scaleflex/js-cloudimage-hotspot/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/js-cloudimage-hotspot.svg?style=flat-square" alt="license"></a>
-  <a href="https://bundlephobia.com/package/js-cloudimage-hotspot"><img src="https://img.shields.io/bundlephobia/minzip/js-cloudimage-hotspot?style=flat-square" alt="bundle size"></a>
+  <a href="https://www.npmjs.com/package/@cloudimage/hotspot"><img src="https://img.shields.io/npm/v/@cloudimage/hotspot.svg?style=flat-square" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/@cloudimage/hotspot"><img src="https://img.shields.io/npm/dm/@cloudimage/hotspot.svg?style=flat-square" alt="npm downloads"></a>
+  <a href="https://github.com/scaleflex/cloudimage-hotspot/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@cloudimage/hotspot.svg?style=flat-square" alt="license"></a>
+  <a href="https://bundlephobia.com/package/@cloudimage/hotspot"><img src="https://img.shields.io/bundlephobia/minzip/@cloudimage/hotspot?style=flat-square" alt="bundle size"></a>
 </p>
 
 <p align="center">
-  <a href="https://scaleflex.github.io/js-cloudimage-hotspot/">Live Demo</a> |
-  <a href="https://scaleflex.github.io/js-cloudimage-hotspot/editor.html">Visual Editor</a> |
-  <a href="https://codesandbox.io/p/devbox/github/scaleflex/js-cloudimage-hotspot/tree/main/examples/vanilla">Vanilla Sandbox</a> |
-  <a href="https://codesandbox.io/p/devbox/github/scaleflex/js-cloudimage-hotspot/tree/main/examples/react">React Sandbox</a>
+  <a href="https://scaleflex.github.io/cloudimage-hotspot/">Live Demo</a> |
+  <a href="https://scaleflex.github.io/cloudimage-hotspot/editor.html">Visual Editor</a> |
+  <a href="https://codesandbox.io/p/devbox/github/scaleflex/cloudimage-hotspot/tree/main/examples/vanilla">Vanilla Sandbox</a> |
+  <a href="https://codesandbox.io/p/devbox/github/scaleflex/cloudimage-hotspot/tree/main/examples/react">React Sandbox</a>
 </p>
 
 ---
 
-## Why js-cloudimage-hotspot?
+## Why @cloudimage/hotspot?
 
 Existing hotspot libraries are often heavy, inaccessible, or locked behind paid services. This library was built to fill the gap:
 
@@ -53,13 +53,13 @@ Existing hotspot libraries are often heavy, inaccessible, or locked behind paid 
 ## Installation
 
 ```bash
-npm install js-cloudimage-hotspot
+npm install @cloudimage/hotspot
 ```
 
 ### CDN
 
 ```html
-<script src="https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/1.1.11/js-cloudimage-hotspot.min.js?vh=bde69f&func=proxy"></script>
+<script src="https://scaleflex.cloudimg.io/v7/plugins/cloudimage/hotspot/1.1.11/hotspot.min.js?vh=83907f&func=proxy"></script>
 ```
 
 ## Quick Start
@@ -67,7 +67,7 @@ npm install js-cloudimage-hotspot
 ### JavaScript API
 
 ```js
-import CIHotspot from 'js-cloudimage-hotspot';
+import CIHotspot from '@cloudimage/hotspot';
 
 const viewer = new CIHotspot('#product-image', {
   src: 'https://example.com/living-room.jpg',
@@ -208,7 +208,7 @@ CIHotspot.autoInit(root?: HTMLElement): CIHotspotInstance[]
 ## React Usage
 
 ```tsx
-import { CIHotspotViewer, useCIHotspot } from 'js-cloudimage-hotspot/react';
+import { CIHotspotViewer, useCIHotspot } from '@cloudimage/hotspot/react';
 
 // Component
 function ProductImage() {
