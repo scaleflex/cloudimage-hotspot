@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.11] - 2026-03-22
+
+### Added
+
+- `popoverTextAlign` config option (`'left'` | `'center'` | `'right'`) — controls text alignment inside popovers via `--ci-hotspot-popover-text-align` CSS variable (default: `'left'`)
+- Configurable via `data-ci-hotspot-popover-text-align` data attribute
+
 ## [1.1.10] - 2026-03-22
 
 ### Fixed
@@ -90,6 +97,7 @@ All notable changes to this project will be documented in this file.
 - **Zero runtime dependencies**
 - **Output formats** — ESM, CJS, and UMD bundles with full TypeScript declarations
 
+[1.1.11]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.11
 [1.1.10]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.10
 [1.1.9]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.9
 [1.1.8]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.8
