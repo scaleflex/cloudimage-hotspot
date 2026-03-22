@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.10] - 2026-03-22
+
+### Fixed
+
+- Navigate hotspots with a `label` but no matching destination scene now show the label as popover title instead of being silently skipped
+
 ## [1.1.9] - 2026-03-22
 
 ### Added
@@ -84,6 +90,7 @@ All notable changes to this project will be documented in this file.
 - **Zero runtime dependencies**
 - **Output formats** — ESM, CJS, and UMD bundles with full TypeScript declarations
 
+[1.1.10]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.10
 [1.1.9]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.9
 [1.1.8]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.8
 [1.1.7]: https://github.com/scaleflex/js-cloudimage-hotspot/releases/tag/v1.1.7
