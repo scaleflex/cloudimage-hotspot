@@ -227,7 +227,7 @@ body {
 /* ── Hero ────────────────────────────────────────── */
 .demo-hero {
   text-align: center;
-  padding: 80px 32px 56px;
+  padding: 60px 32px 56px;
   background: var(--sf-dark);
   position: relative;
   overflow: hidden;
@@ -264,42 +264,27 @@ body {
   z-index: 1;
 }
 
-.demo-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: 0.04em;
-  color: var(--sf-accent);
-  padding: 8px 20px;
-  border-radius: 100px;
-  border: 1px solid rgba(0, 212, 170, 0.25);
-  background: rgba(0, 212, 170, 0.06);
-  margin-bottom: 32px;
-}
-
-.demo-hero-badge::before {
-  content: '';
+.demo-banner-link {
   display: block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--sf-accent);
-  box-shadow: 0 0 8px var(--sf-accent);
-  animation: demo-pulse-dot 2s ease-in-out infinite;
+  max-width: 940px;
+  margin: 0 auto 48px;
+  border-radius: var(--sf-radius);
+  overflow: hidden;
+  transition: transform var(--sf-transition), box-shadow var(--sf-transition);
 }
 
-@keyframes demo-pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
+.demo-banner-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sf-shadow-lg);
 }
 
-.demo-hero-badge-sep {
-  margin: 0 4px;
-  opacity: 0.4;
+.demo-banner-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--sf-radius);
 }
+
 
 .demo-hero h1 {
   font-size: clamp(36px, 6vw, 64px);
@@ -368,7 +353,7 @@ body {
   }
 }
 
-.demo-hero-badge,
+.demo-banner-link,
 .demo-hero h1,
 .demo-subtitle,
 .demo-hero-actions,
@@ -377,7 +362,7 @@ body {
   animation: demo-hero-enter 0.7s cubic-bezier(0.4, 0, 0.2, 1) backwards;
 }
 
-.demo-hero-badge        { animation-delay: 0s; }
+.demo-banner-link        { animation-delay: 0s; }
 .demo-hero h1           { animation-delay: 0.1s; }
 .demo-subtitle          { animation-delay: 0.2s; }
 .demo-hero-actions      { animation-delay: 0.3s; }
@@ -385,7 +370,7 @@ body {
 .demo-hero-meta         { animation-delay: 0.5s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .demo-hero-badge,
+  .demo-banner-link,
   .demo-hero h1,
   .demo-subtitle,
   .demo-hero-actions,
@@ -1510,7 +1495,7 @@ kbd {
   }
 
   .demo-hero {
-    padding: 100px 16px 56px;
+    padding: 56px 16px 56px;
   }
 
   .demo-hero-actions {
