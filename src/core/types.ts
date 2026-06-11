@@ -31,6 +31,13 @@ export interface Scene {
   hotspots: HotspotItem[];
 }
 
+/** One page of a paged popover card — image, title, and description swap together */
+export interface PopoverSlide {
+  image?: string;
+  title?: string;
+  description?: string;
+}
+
 /** Data fields for the built-in popover template */
 export interface PopoverData {
   id?: string;
@@ -39,6 +46,12 @@ export interface PopoverData {
   price?: string;
   description?: string;
   image?: string;
+  /** Multiple image URLs — renders a gallery with prev/next arrows and dots. Takes precedence over `image`. */
+  images?: string[];
+  /** Full-card pages (image + title + description swap together, Fnac-style). Takes precedence over `images` and `image`. Price and CTA stay fixed below the pager. */
+  slides?: PopoverSlide[];
+  /** Card layout for `slides`: 'vertical' (default, image above text) or 'horizontal' (image left, text right — wider and shorter card). */
+  layout?: 'vertical' | 'horizontal';
   url?: string;
   ctaText?: string;
   [key: string]: unknown;

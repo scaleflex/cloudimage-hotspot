@@ -30,10 +30,26 @@ new CIHotspot('#hero-viewer', {
       y: '57%',
       label: 'Loveseat Sofa',
       data: {
-        title: 'Loveseat Sofa',
         originalPrice: '$1,499',
         price: '$1,249',
-        description: 'Sage green linen blend with bolster armrests and a burnt-orange velvet accent cushion.',
+        layout: 'horizontal',
+        slides: [
+          {
+            image: 'https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/yehleen-gaffney-unsplash.jpg?vh=cfb8d7&func=crop&gravity=southwest&w=800&h=450',
+            title: 'Loveseat Sofa',
+            description: 'Sage green linen blend with bolster armrests and a burnt-orange velvet accent cushion.',
+          },
+          {
+            image: 'https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/yehleen-gaffney-unsplash.jpg?vh=cfb8d7&func=crop&gravity=south&w=800&h=450',
+            title: 'Durable Linen Weave',
+            description: 'Stain-resistant blend rated for 40,000 rub cycles — built for everyday family use.',
+          },
+          {
+            image: 'https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/alexandra-gorn-unsplash.jpg?w=800&h=450&func=crop',
+            title: 'Fits Any Corner',
+            description: 'Compact 160 cm footprint pairs with the matching armchair and ottoman.',
+          },
+        ],
         url: '#',
         ctaText: 'Shop Now',
       },
@@ -49,6 +65,10 @@ new CIHotspot('#hero-viewer', {
         originalPrice: '$229',
         price: '$179',
         description: 'Round white top with solid beechwood legs, styled with a rattan serving tray.',
+        images: [
+          'https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/yehleen-gaffney-unsplash.jpg?vh=cfb8d7&func=crop&gravity=south&w=800&h=450',
+          'https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/alexandra-gorn-unsplash.jpg?w=800&h=450&func=crop',
+        ],
         url: '#',
         ctaText: 'See Details',
       },

@@ -324,6 +324,209 @@
   object-fit: cover;
 }
 
+/* === Popover Image Gallery === */
+.ci-hotspot-popover-gallery {
+  position: relative;
+}
+
+.ci-hotspot-popover-gallery-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+}
+
+/* `inherit` (not `auto`) so slides stay non-interactive while the popover itself
+   is hidden via pointer-events: none — an explicit `auto` would punch through it. */
+.ci-hotspot-popover-gallery-slide--active {
+  opacity: 1;
+  pointer-events: inherit;
+}
+
+.ci-hotspot-popover-gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: #222;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.ci-hotspot-popover-gallery-nav:hover {
+  background: #fff;
+}
+
+.ci-hotspot-popover-gallery-nav--prev {
+  left: 8px;
+}
+
+.ci-hotspot-popover-gallery-nav--next {
+  right: 8px;
+}
+
+.ci-hotspot-popover-gallery-nav svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ci-hotspot-popover-gallery-nav--prev svg {
+  transform: rotate(180deg);
+}
+
+.ci-hotspot-popover-gallery-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ci-hotspot-popover-gallery-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.ci-hotspot-popover-gallery-dot--active {
+  background: #fff;
+}
+
+.ci-hotspot-popover-gallery-nav:focus-visible,
+.ci-hotspot-popover-gallery-dot:focus-visible {
+  outline: 3px solid var(--ci-hotspot-focus-ring, #4A90D9);
+  outline-offset: 2px;
+}
+
+/* === Full-Card Slides (image + text page together) === */
+.ci-hotspot-popover-slides {
+  display: grid;
+}
+
+.ci-hotspot-popover-slide {
+  grid-area: 1 / 1;
+  min-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 250ms ease, visibility 250ms ease;
+}
+
+.ci-hotspot-popover-slide.ci-hotspot-popover-gallery-slide--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ci-hotspot-popover-slide .ci-hotspot-popover-image-wrapper {
+  border-radius: calc(var(--ci-hotspot-popover-border-radius) - 4px) calc(var(--ci-hotspot-popover-border-radius) - 4px) 0 0;
+}
+
+.ci-hotspot-popover-gallery-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 4px 0 12px;
+}
+
+.ci-hotspot-popover-gallery--card .ci-hotspot-popover-gallery-dots {
+  position: static;
+  flex: 0 1 auto;
+}
+
+.ci-hotspot-popover-gallery--card .ci-hotspot-popover-gallery-nav {
+  position: static;
+  transform: none;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  color: var(--ci-hotspot-title-color, currentColor);
+}
+
+.ci-hotspot-popover-gallery--card .ci-hotspot-popover-gallery-nav:hover {
+  background: rgba(128, 128, 128, 0.15);
+}
+
+.ci-hotspot-popover-gallery--card .ci-hotspot-popover-gallery-dot {
+  background: currentColor;
+  opacity: 0.25;
+  box-shadow: none;
+  color: var(--ci-hotspot-title-color, currentColor);
+}
+
+.ci-hotspot-popover-gallery--card .ci-hotspot-popover-gallery-dot--active {
+  background: var(--ci-hotspot-cta-bg, #0058a3);
+  opacity: 1;
+}
+
+/* === Horizontal Card Layout (image left, text right) === */
+.ci-hotspot-popover--horizontal {
+  width: var(--ci-hotspot-popover-horizontal-width, 480px);
+  max-width: var(--ci-hotspot-popover-horizontal-width, 480px);
+}
+
+.ci-hotspot-popover--horizontal .ci-hotspot-popover-slide {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.ci-hotspot-popover--horizontal .ci-hotspot-popover-slides {
+  margin-bottom: 12px;
+}
+
+/* Footer bar: price left, pager centered, CTA right */
+.ci-hotspot-popover-gallery-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ci-hotspot-popover-gallery-footer .ci-hotspot-popover-price-row {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.ci-hotspot-popover-gallery-footer .ci-hotspot-popover-gallery-pager {
+  margin: 0;
+  flex: 1;
+}
+
+.ci-hotspot-popover-gallery-footer .ci-hotspot-popover-cta-row {
+  flex-shrink: 0;
+}
+
+.ci-hotspot-popover--horizontal .ci-hotspot-popover-slide .ci-hotspot-popover-image-wrapper {
+  flex: 0 0 42%;
+  width: auto;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  border-radius: calc(var(--ci-hotspot-popover-border-radius) - 4px);
+}
+
+.ci-hotspot-popover--horizontal .ci-hotspot-popover-slide .ci-hotspot-popover-body {
+  flex: 1;
+  min-width: 0;
+}
+
 .ci-hotspot-popover-body {
   line-height: 1.5;
   text-align: var(--ci-hotspot-popover-text-align);

@@ -2,6 +2,7 @@ import type { HotspotItem, Placement } from '../core/types';
 import { createElement, addClass, removeClass } from '../utils/dom';
 import { computePosition } from './position';
 import { renderPopoverContent } from './template';
+import { initGallery } from './gallery';
 
 export interface PopoverOptions {
   placement: Placement;
@@ -37,6 +38,10 @@ export class Popover {
       ...(isDialog && hotspot.label ? { 'aria-label': hotspot.label } : {}),
     });
 
+    if (hotspot.data?.layout === 'horizontal') {
+      addClass(this.element, 'ci-hotspot-popover--horizontal');
+    }
+
     this.arrowEl = createElement('div', 'ci-hotspot-popover-arrow');
     this.contentEl = createElement('div', 'ci-hotspot-popover-content');
 
@@ -50,6 +55,9 @@ export class Popover {
     } else if (content instanceof HTMLElement) {
       this.contentEl.appendChild(content);
     }
+
+    // Multi-image gallery navigation (no-op when content has no gallery)
+    this.hoverCleanups.push(initGallery(this.contentEl));
 
     // Delegated click handler for CTA buttons/links (with or without product ID)
     if (options.onProductClick) {

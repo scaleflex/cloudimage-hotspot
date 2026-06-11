@@ -179,10 +179,16 @@ export class PropertyPanel {
       }),
     );
 
+    const imageUrls = (data.images?.length ? data.images : data.image ? [data.image] : []).join('\n');
     this.panelEl.appendChild(
-      this.createTextField('Image URL', data.image || '', (val) => {
+      this.createTextArea('Image URLs (one per line)', imageUrls, (val) => {
+        const urls = val.split('\n').map((s) => s.trim()).filter(Boolean);
         this.editor.updateHotspot(hotspot.id, {
-          data: { ...hotspot.data, image: val },
+          data: {
+            ...hotspot.data,
+            image: urls.length === 1 ? urls[0] : undefined,
+            images: urls.length > 1 ? urls : undefined,
+          },
         });
       }),
     );

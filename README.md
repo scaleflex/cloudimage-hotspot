@@ -49,6 +49,7 @@ Existing hotspot libraries are often heavy, inaccessible, or locked behind paid 
 - **TypeScript** — Full type definitions
 - **Cloudimage CDN** — Optional responsive image loading
 - **Multi-image scenes** — Navigate between images with animated transitions
+- **Popover image gallery** — Multiple images per hotspot card with arrows and dot pager
 
 ## Installation
 
@@ -177,6 +178,9 @@ new CIHotspot(element: HTMLElement | string, config: CIHotspotConfig)
 | `price` | `string` | Current price |
 | `description` | `string` | Description text |
 | `image` | `string` | Image URL displayed at top of popover |
+| `images` | `string[]` | Multiple image URLs — renders a gallery with prev/next arrows and a dot pager. Takes precedence over `image` |
+| `slides` | `PopoverSlide[]` | Full-card pages — each `{ image?, title?, description? }` swaps together, with a pager below the content. Price and CTA stay fixed. Takes precedence over `images` and `image` |
+| `layout` | `'vertical' \| 'horizontal'` | Card layout for `slides` — `'horizontal'` puts the image left and text right in a wider, shorter card (default: `'vertical'`). Width via `--ci-hotspot-popover-horizontal-width` (default 480px) |
 | `url` | `string` | Link URL for the CTA button |
 | `ctaText` | `string` | CTA button label (default: `'View details'`) |
 
@@ -289,6 +293,53 @@ viewer.getScenes();       // ['living-room', 'kitchen']
 ```
 
 Hotspots with `navigateTo` display as arrow markers and switch scenes on click.
+
+## Popover Image Gallery
+
+Show multiple images on a single hotspot card. Pass `images` instead of `image` and the built-in template renders a gallery with prev/next arrows and a dot pager:
+
+```js
+{
+  id: 'lens',
+  x: '60%',
+  y: '45%',
+  label: 'Camera lens',
+  data: {
+    title: 'FE 16-35mm f/2.8 GM II',
+    price: '$2,299',
+    images: [
+      '/lens-front.jpg',
+      '/lens-side.jpg',
+      '/lens-mounted.jpg',
+    ],
+    url: '/products/fe-16-35',
+  },
+}
+```
+
+The gallery wraps around at both ends, is fully keyboard-accessible, and lazy-loads all images after the first.
+
+For richer product storytelling, use `slides` instead — each page swaps the image **and** the text together (like product key-points on retail sites), while the price row and CTA stay fixed below the pager:
+
+```js
+{
+  id: 'lens',
+  x: '60%',
+  y: '45%',
+  label: 'Camera lens',
+  data: {
+    price: '$2,299',
+    layout: 'horizontal', // image left, text right — avoids tall, scrolling cards
+    slides: [
+      { image: '/lens-resolution.jpg', title: 'G Master resolution', description: 'High spatial resolution across the whole zoom range.' },
+      { image: '/lens-bokeh.jpg', title: 'Beautiful bokeh', description: 'Three XA elements control aberration for smooth blur.' },
+      { image: '/lens-af.jpg', title: 'Fast, quiet AF', description: 'Four XD linear motors track subjects at up to 30 fps.' },
+    ],
+    url: '/products/fe-16-35',
+    ctaText: 'View product',
+  },
+}
+```
 
 ## Theming
 
