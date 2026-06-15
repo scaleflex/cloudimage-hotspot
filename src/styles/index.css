@@ -492,25 +492,34 @@
   margin-bottom: 12px;
 }
 
-/* Footer bar: price left, pager centered, CTA right */
+/* Footer: pager on its own centered line, then price left / CTA right */
 .ci-hotspot-popover-gallery-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ci-hotspot-popover-gallery-footer .ci-hotspot-popover-gallery-pager {
+  margin: 0;
+}
+
+.ci-hotspot-popover-gallery-footer .ci-hotspot-popover-gallery-dots {
+  flex-wrap: wrap;
+}
+
+.ci-hotspot-popover-gallery-footer-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 
-.ci-hotspot-popover-gallery-footer .ci-hotspot-popover-price-row {
+.ci-hotspot-popover-gallery-footer-row .ci-hotspot-popover-price-row {
   margin-bottom: 0;
   flex-shrink: 0;
 }
 
-.ci-hotspot-popover-gallery-footer .ci-hotspot-popover-gallery-pager {
-  margin: 0;
-  flex: 1;
-}
-
-.ci-hotspot-popover-gallery-footer .ci-hotspot-popover-cta-row {
+.ci-hotspot-popover-gallery-footer-row .ci-hotspot-popover-cta-row {
   flex-shrink: 0;
 }
 

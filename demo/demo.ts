@@ -40,7 +40,7 @@ new CIHotspot('#hero-viewer', {
             description: 'Sage green linen blend with bolster armrests and a burnt-orange velvet accent cushion.',
           },
           {
-            image: 'https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/yehleen-gaffney-unsplash.jpg?vh=cfb8d7&func=crop&gravity=south&w=800&h=450',
+            image: 'https://scaleflex.cloudimg.io/v7/plugins/js-cloudimage-hotspot/andrea-davis-1.jpg?vh=8c0c49&func=crop&w=800&h=450',
             title: 'Durable Linen Weave',
             description: 'Stain-resistant blend rated for 40,000 rub cycles — built for everyday family use.',
           },

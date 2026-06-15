@@ -136,7 +136,10 @@ function renderCardSlides(slides: PopoverSlide[], footer?: { priceRow: string; c
     `</div>`;
 
   if (footer) {
-    const footerInner = footer.priceRow + pager + footer.cta;
+    // Pager gets its own centered line so a long dot row never crowds price/CTA.
+    const actionRow = footer.priceRow + footer.cta;
+    const actionBar = actionRow ? `<div class="ci-hotspot-popover-gallery-footer-row">${actionRow}</div>` : '';
+    const footerInner = pager + actionBar;
     const footerBar = footerInner ? `<div class="ci-hotspot-popover-gallery-footer">${footerInner}</div>` : '';
     return (
       `<div class="ci-hotspot-popover-gallery ci-hotspot-popover-gallery--card">` +

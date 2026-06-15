@@ -89,8 +89,9 @@ export class ZoomPan {
     // Double-click toggle
     const onDblClick = (e: MouseEvent) => {
       if (!this.enabled) return;
-      // Don't zoom when double-clicking on hotspot markers
-      if ((e.target as HTMLElement).closest('.ci-hotspot-marker')) return;
+      // Don't zoom when double-clicking on hotspot markers or inside a popover
+      // (e.g. gallery prev/next arrows), both of which live inside the container.
+      if ((e.target as HTMLElement).closest('.ci-hotspot-marker, .ci-hotspot-popover')) return;
       const rect = this.container.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -164,6 +165,9 @@ export class ZoomPan {
           this.applyTransform();
         },
         onDoubleTap: (cx, cy) => {
+          // Don't zoom when double-tapping markers or popover controls (e.g. gallery arrows)
+          const tapTarget = document.elementFromPoint(cx, cy) as HTMLElement | null;
+          if (tapTarget?.closest('.ci-hotspot-marker, .ci-hotspot-popover')) return;
           const rect = this.container.getBoundingClientRect();
           if (this.zoom > 1) {
             this.resetZoom();
