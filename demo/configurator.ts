@@ -35,6 +35,7 @@ export function initConfigurator(): void {
   const cfgTheme = document.getElementById('cfg-theme') as HTMLSelectElement;
   const cfgPlacement = document.getElementById('cfg-placement') as HTMLSelectElement;
   const cfgMarkerStyle = document.getElementById('cfg-marker-style') as HTMLSelectElement;
+  const cfgLayout = document.getElementById('cfg-layout') as HTMLSelectElement;
   const cfgTextAlign = document.getElementById('cfg-text-align') as HTMLSelectElement;
   const cfgZoomControlsPosition = document.getElementById('cfg-zoom-controls-position') as HTMLSelectElement;
   const cfgZoomControlsPositionLabel = cfgZoomControlsPosition.closest('label') as HTMLElement;
@@ -47,9 +48,14 @@ export function initConfigurator(): void {
 
   function getConfig(): CIHotspotConfig {
     const style = cfgMarkerStyle.value as MarkerStyle;
+    const compact = cfgLayout.value === 'compact';
     const hotspots = defaultHotspots.map((h) => ({
       ...h,
       markerStyle: style !== 'dot' ? style : undefined,
+      // Compact cards add the layout flag plus a chevron CTA (needs a url/id)
+      data: compact
+        ? { ...h.data, layout: 'compact' as const, url: '#', ctaText: 'View details' }
+        : h.data,
     }));
     const isBrand = cfgTheme.value === 'brand';
     return {
@@ -120,7 +126,7 @@ export function initConfigurator(): void {
 
   // Bind controls
   [cfgZoom, cfgPulse, cfgFullscreen, cfgInvertMarker].forEach((el) => el.addEventListener('change', rebuild));
-  [cfgTrigger, cfgTheme, cfgPlacement, cfgMarkerStyle, cfgTextAlign, cfgZoomControlsPosition].forEach((el) => el.addEventListener('change', rebuild));
+  [cfgTrigger, cfgTheme, cfgPlacement, cfgMarkerStyle, cfgLayout, cfgTextAlign, cfgZoomControlsPosition].forEach((el) => el.addEventListener('change', rebuild));
 
   // Copy button
   cfgCopy.addEventListener('click', () => {

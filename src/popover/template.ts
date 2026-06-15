@@ -5,6 +5,10 @@ import { sanitizeHTML } from './sanitize';
 const CHEVRON_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
 
 export function renderBuiltInTemplate(data: PopoverData): string {
+  if (data.layout === 'compact') {
+    return renderCompactCard(data);
+  }
+
   const parts: string[] = [];
   const priceRow = renderPriceRow(data);
   const cta = renderCta(data);
@@ -71,6 +75,45 @@ function renderCta(data: PopoverData): string {
   if (data.id) {
     const ctaText = data.ctaText || 'View details';
     return `<div class="ci-hotspot-popover-cta-row"><button class="ci-hotspot-popover-cta" data-product-id="${escapeAttr(data.id)}">${escapeHtml(String(ctaText))}</button></div>`;
+  }
+  return '';
+}
+
+/**
+ * Render the light, text-only card (layout: 'compact').
+ * Title, description and price stack on the left; a chevron CTA sits on the right.
+ */
+function renderCompactCard(data: PopoverData): string {
+  const body: string[] = [];
+  if (data.title) {
+    body.push(`<h3 class="ci-hotspot-popover-title">${escapeHtml(data.title)}</h3>`);
+  }
+  if (data.description) {
+    body.push(`<p class="ci-hotspot-popover-description">${escapeHtml(data.description)}</p>`);
+  }
+  const priceRow = renderPriceRow(data);
+  if (priceRow) {
+    body.push(priceRow);
+  }
+
+  const text = `<div class="ci-hotspot-popover-compact-text">${body.join('')}</div>`;
+  return `<div class="ci-hotspot-popover-compact">${text}${renderCompactCta(data)}</div>`;
+}
+
+/**
+ * Chevron CTA for the compact card — same click semantics as renderCta.
+ * The link/button spans the full-height right strip of the card (a generous hit
+ * area), while the chevron stays visually contained in a small circle.
+ */
+function renderCompactCta(data: PopoverData): string {
+  const label = escapeAttr(String(data.ctaText || 'View details'));
+  const icon = `<span class="ci-hotspot-popover-compact-cta-icon">${CHEVRON_SVG}</span>`;
+  if (data.url && isSafeUrl(data.url)) {
+    const productAttr = data.id ? ` data-product-id="${escapeAttr(data.id)}"` : '';
+    return `<a class="ci-hotspot-popover-cta ci-hotspot-popover-compact-cta" href="${escapeAttr(data.url)}" target="_top" aria-label="${label}"${productAttr}>${icon}</a>`;
+  }
+  if (data.id) {
+    return `<button class="ci-hotspot-popover-cta ci-hotspot-popover-compact-cta" data-product-id="${escapeAttr(data.id)}" aria-label="${label}">${icon}</button>`;
   }
   return '';
 }

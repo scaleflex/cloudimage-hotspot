@@ -50,8 +50,14 @@ export interface PopoverData {
   images?: string[];
   /** Full-card pages (image + title + description swap together, Fnac-style). Takes precedence over `images` and `image`. Price and CTA stay fixed below the pager. */
   slides?: PopoverSlide[];
-  /** Card layout for `slides`: 'vertical' (default, image above text) or 'horizontal' (image left, text right — wider and shorter card). */
-  layout?: 'vertical' | 'horizontal';
+  /**
+   * Card layout:
+   * - 'vertical' (default) — image above text.
+   * - 'horizontal' — image left, text right (wider, shorter card). Applies to `slides`.
+   * - 'compact' — light text-only card: title, description and price stacked with a
+   *   chevron CTA on the right. No image; ignores `slides`/`images`/`image`.
+   */
+  layout?: 'vertical' | 'horizontal' | 'compact';
   url?: string;
   ctaText?: string;
   [key: string]: unknown;

@@ -40,6 +40,8 @@ export class Popover {
 
     if (hotspot.data?.layout === 'horizontal') {
       addClass(this.element, 'ci-hotspot-popover--horizontal');
+    } else if (hotspot.data?.layout === 'compact') {
+      addClass(this.element, 'ci-hotspot-popover--compact');
     }
 
     this.arrowEl = createElement('div', 'ci-hotspot-popover-arrow');

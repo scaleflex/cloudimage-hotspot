@@ -86,6 +86,20 @@ new CIHotspot('#hero-viewer', {
         ctaText: 'Shop Now',
       },
     },
+    {
+      id: 'floor-lamp',
+      x: '82%',
+      y: '46%',
+      label: 'Arc Floor Lamp',
+      data: {
+        layout: 'compact',
+        title: 'SKURUP',
+        description: 'Arc floor lamp',
+        price: '€79,99',
+        url: '#',
+        ctaText: 'View details',
+      },
+    },
   ],
 });
 

@@ -85,6 +85,31 @@ describe('renderBuiltInTemplate', () => {
     expect(html).not.toContain('ci-hotspot-popover-original-price');
   });
 
+  it('renders the compact layout with a chevron CTA and no image', () => {
+    const html = renderBuiltInTemplate({
+      layout: 'compact',
+      title: 'SKURUP',
+      description: 'Arc floor lamp',
+      price: '€79,99',
+      image: 'https://example.com/lamp.jpg',
+      url: 'https://example.com/lamp',
+    });
+    expect(html).toContain('ci-hotspot-popover-compact');
+    expect(html).toContain('ci-hotspot-popover-compact-cta');
+    expect(html).toContain('SKURUP');
+    expect(html).toContain('€79,99');
+    expect(html).toContain('svg');
+    // compact ignores images entirely
+    expect(html).not.toContain('ci-hotspot-popover-image');
+    expect(html).not.toContain('lamp.jpg');
+  });
+
+  it('omits the compact CTA when no url or id', () => {
+    const html = renderBuiltInTemplate({ layout: 'compact', title: 'No CTA' });
+    expect(html).toContain('ci-hotspot-popover-compact');
+    expect(html).not.toContain('ci-hotspot-popover-cta');
+  });
+
   it('renders a gallery when multiple images provided', () => {
     const html = renderBuiltInTemplate({
       title: 'Lens',

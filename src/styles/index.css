@@ -536,6 +536,98 @@
   min-width: 0;
 }
 
+/* === Compact Card Layout (light text-only card with chevron CTA) === */
+.ci-hotspot-popover--compact {
+  width: var(--ci-hotspot-popover-compact-width, 230px);
+  max-width: var(--ci-hotspot-popover-compact-width, 230px);
+}
+
+/* Tighter padding than the standard popover — this is the dense variant */
+.ci-hotspot-popover--compact .ci-hotspot-popover-content {
+  padding: var(--ci-hotspot-popover-compact-padding, 12px 14px);
+}
+
+.ci-hotspot-popover-compact {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ci-hotspot-popover-compact-text {
+  flex: 1;
+  min-width: 0;
+  text-align: var(--ci-hotspot-popover-text-align);
+}
+
+/* Collapse trailing margins — the flex row owns the spacing here */
+.ci-hotspot-popover-compact-text > :last-child {
+  margin-bottom: 0;
+}
+
+/* Condensed type scale: smaller sizes and tight vertical rhythm */
+.ci-hotspot-popover-compact .ci-hotspot-popover-title {
+  font-size: 15px;
+  margin-bottom: 1px;
+}
+
+.ci-hotspot-popover-compact .ci-hotspot-popover-description {
+  font-size: 12px;
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+.ci-hotspot-popover-compact .ci-hotspot-popover-price {
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.ci-hotspot-popover-compact .ci-hotspot-popover-price-row {
+  margin-bottom: 0;
+}
+
+/* CTA hit area: full card height, bleeding into the right/top/bottom padding so
+   the whole right strip (~20% of the card) is clickable, not just the icon. */
+.ci-hotspot-popover-compact-cta.ci-hotspot-popover-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: auto;
+  margin: -12px -14px -12px 0;
+  padding: 0 14px;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ci-hotspot-title-color, currentColor);
+  transition: background 150ms ease;
+}
+
+.ci-hotspot-popover-compact-cta.ci-hotspot-popover-cta:hover {
+  opacity: 1;
+  background: rgba(128, 128, 128, 0.06);
+}
+
+/* The visible circle stays small; only its background reacts to hover */
+.ci-hotspot-popover-compact-cta-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(128, 128, 128, 0.12);
+  transition: background 150ms ease;
+}
+
+.ci-hotspot-popover-compact-cta:hover .ci-hotspot-popover-compact-cta-icon {
+  background: rgba(128, 128, 128, 0.22);
+}
+
+.ci-hotspot-popover-compact-cta svg {
+  width: 18px;
+  height: 18px;
+}
+
 .ci-hotspot-popover-body {
   line-height: 1.5;
   text-align: var(--ci-hotspot-popover-text-align);
