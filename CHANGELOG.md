@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- Popover image gallery (`data.images`) — multiple images per card with prev/next arrows, dot pager and wrap-around navigation
+- Full-card slides (`data.slides`) — image, title and description swap together while price and CTA stay fixed
+- `data.layout: 'horizontal'` — image left, text right, with a footer bar (price | pager | CTA); width via `--ci-hotspot-popover-horizontal-width`
+- `data.layout: 'compact'` — light, text-only card (title, description, price + chevron CTA, no image); the whole right strip is clickable. Width via `--ci-hotspot-popover-compact-width`; honors `--ci-hotspot-popover-text-align`
+- Editor: "Image URL" field becomes multi-line "Image URLs (one per line)" mapping to `image`/`images`
+- Demo configurator: "Card Layout" control to switch between default and compact cards
+
+### Fixed
+
+- Active popover slides use `pointer-events: inherit` so hidden popovers no longer intercept hovers on markers underneath
+- Zoom double-click/tap ignores popover controls so gallery arrows don't trigger zoom
+
 ## [1.1.11] - 2026-03-22
 
 ### Added

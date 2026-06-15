@@ -50,6 +50,7 @@ Existing hotspot libraries are often heavy, inaccessible, or locked behind paid 
 - **Cloudimage CDN** — Optional responsive image loading
 - **Multi-image scenes** — Navigate between images with animated transitions
 - **Popover image gallery** — Multiple images per hotspot card with arrows and dot pager
+- **Compact card layout** — Light, text-only popover with a large clickable chevron CTA
 
 ## Installation
 
@@ -180,7 +181,7 @@ new CIHotspot(element: HTMLElement | string, config: CIHotspotConfig)
 | `image` | `string` | Image URL displayed at top of popover |
 | `images` | `string[]` | Multiple image URLs — renders a gallery with prev/next arrows and a dot pager. Takes precedence over `image` |
 | `slides` | `PopoverSlide[]` | Full-card pages — each `{ image?, title?, description? }` swaps together, with a pager below the content. Price and CTA stay fixed. Takes precedence over `images` and `image` |
-| `layout` | `'vertical' \| 'horizontal'` | Card layout for `slides` — `'horizontal'` puts the image left and text right in a wider, shorter card (default: `'vertical'`). Width via `--ci-hotspot-popover-horizontal-width` (default 480px) |
+| `layout` | `'vertical' \| 'horizontal' \| 'compact'` | Card layout. `'horizontal'` puts the image left and text right in a wider, shorter `slides` card (width via `--ci-hotspot-popover-horizontal-width`, default 480px). `'compact'` renders a light, text-only card — title, description and price with a chevron CTA, no image (width via `--ci-hotspot-popover-compact-width`, default 230px). Default: `'vertical'` |
 | `url` | `string` | Link URL for the CTA button |
 | `ctaText` | `string` | CTA button label (default: `'View details'`) |
 
@@ -340,6 +341,27 @@ For richer product storytelling, use `slides` instead — each page swaps the im
   },
 }
 ```
+
+For simple callouts where a full card is too much, use `layout: 'compact'` — a light, text-only card with the title, description and price and a chevron CTA. No image is rendered. The whole right strip of the card is clickable (not just the chevron), so it's an easy target:
+
+```js
+{
+  id: 'floor-lamp',
+  x: '82%',
+  y: '46%',
+  label: 'Arc floor lamp',
+  data: {
+    layout: 'compact',
+    title: 'SKURUP',
+    description: 'Arc floor lamp',
+    price: '€79,99',
+    url: '/products/skurup',
+    ctaText: 'View details', // used as the chevron's aria-label
+  },
+}
+```
+
+The compact card honors `--ci-hotspot-popover-text-align` and its width can be tuned with `--ci-hotspot-popover-compact-width` (default 230px).
 
 ## Theming
 
