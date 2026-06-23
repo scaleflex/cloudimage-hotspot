@@ -18,6 +18,8 @@
   --sf-dark-surface: #111738;
   --sf-dark-card: #161d42;
   --sf-dark-border: rgba(255, 255, 255, 0.08);
+  --sf-dark-text: #e2e8f0;
+  --sf-primary-mid: #2c99ff;
   --sf-light-bg: #f5f7fb;
   --sf-light-card: #ffffff;
   --sf-light-border: #e2e8f0;
@@ -964,174 +966,76 @@ kbd {
 /* ── Footer ──────────────────────────────────────── */
 .demo-footer {
   background: var(--sf-dark);
-  color: rgba(255, 255, 255, 0.7);
-  padding: 0 32px;
-  position: relative;
-  overflow: hidden;
+  color: var(--sf-dark-text);
+  padding: 56px 32px 32px;
 }
-
-.demo-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--sf-primary-light), transparent);
-}
-
 .demo-footer-main {
-  max-width: 1200px;
+  /* Mirror the .sfx-also-cols grid above (max-width 1215px, 1fr 2fr, 24px gap)
+     so the brand sits under the Scaleflex card and the link group is exactly
+     the size & position of the Cloudimage card — the 2fr column (≈794px). */
+  max-width: 1215px;
   margin: 0 auto;
-  padding: 64px 0 40px;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 48px;
-  position: relative;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+  align-items: start;
 }
-
-.demo-footer-brand {
+/* The three link columns (Resources / Examples / Support) fill the 2fr column
+   (Cloudimage-card width) and spread across it. */
+.demo-footer-links {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  justify-content: space-between;
+  gap: 24px;
 }
-
-.demo-footer-logo {
-  display: block;
-  width: 140px;
-  opacity: 0.8;
-  transition: opacity var(--sf-transition);
-}
-
-.demo-footer-logo:hover {
-  opacity: 1;
-}
-
+/* The horizontal logo's S-mark spans the full image height, while the
+   "scaleflex" wordmark sits ~5px lower inside the box. Nudge the logo up so the
+   WORD — not the mark — lines up with the column headings (Resources/…); the
+   mark is allowed to overhang slightly above. Tune the translate if needed. */
+.demo-footer-brand img { display: block; height: 26px; margin-bottom: 12px; transform: translateY(-4px); }
 .demo-footer-brand p {
-  color: rgba(255, 255, 255, 0.35);
   font-size: 14px;
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
   max-width: 280px;
 }
-
-.demo-footer-col {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .demo-footer-col h4 {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 4px;
+  margin: 0 0 14px;
 }
-
 .demo-footer-col a {
-  color: rgba(255, 255, 255, 0.4);
-  text-decoration: none;
-  font-size: 14px;
-  transition: color var(--sf-transition);
-}
-
-.demo-footer-col a:hover {
-  color: var(--sf-primary-light);
-}
-
-.demo-footer-coffee {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
-  gap: 8px;
-  color: #fbbf24 !important;
-  opacity: 0.85;
-  transition: opacity var(--sf-transition), color var(--sf-transition);
+  gap: 6px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 4px 0;
+  text-decoration: none;
+  transition: color 0.15s ease;
 }
-
-.demo-footer-coffee:hover {
-  color: #fbbf24 !important;
-  opacity: 1;
-}
-
-.demo-coffee-icon {
-  position: relative;
-  display: inline-flex;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.demo-steam {
-  position: absolute;
-  width: 2px;
-  height: 6px;
-  background: #fbbf24;
-  border-radius: 1px;
-  opacity: 0;
-  animation: demo-steam 2.2s ease-in-out infinite;
-}
-
-.demo-steam--1 {
-  left: 3px;
-  top: -4px;
-  animation-delay: 0s;
-}
-
-.demo-steam--2 {
-  left: 7px;
-  top: -4px;
-  animation-delay: 0.4s;
-}
-
-.demo-steam--3 {
-  left: 11px;
-  top: -4px;
-  animation-delay: 0.8s;
-}
-
-@keyframes demo-steam {
-  0% {
-    opacity: 0;
-    transform: translateY(0) scaleY(0.5);
-  }
-  30% {
-    opacity: 0.6;
-    transform: translateY(-4px) scaleY(1);
-  }
-  60% {
-    opacity: 0.3;
-    transform: translateY(-8px) scaleX(1.5) scaleY(0.8);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-12px) scaleX(2) scaleY(0.3);
-  }
-}
-
+.demo-footer-col a + a { margin-top: 2px; }
+.demo-footer-col a:hover { color: #fff; }
+.demo-footer-col svg { opacity: 0.5; }
 .demo-footer-bottom {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  max-width: 1215px;
+  margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--sf-dark-border);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
   text-align: center;
 }
-
-.demo-footer-bottom p {
-  color: rgba(255, 255, 255, 0.25);
-  font-size: 13px;
-}
-
 .demo-footer-bottom a {
   color: var(--sf-primary-light);
   text-decoration: none;
-  transition: color var(--sf-transition);
+  transition: color 0.15s ease;
 }
+.demo-footer-bottom a:hover { color: var(--sf-primary-mid); }
 
-.demo-footer-bottom a:hover {
-  color: #fff;
-}
 
 /* ── Custom green theme override ─────────────────── */
 #theme-custom .ci-hotspot-container {
@@ -1522,8 +1426,13 @@ kbd {
   }
 
   .demo-footer-main {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .demo-footer-links {
+    flex-direction: column;
+    gap: 28px;
   }
 
   .demo-footer-brand {
@@ -1535,3 +1444,171 @@ kbd {
   }
 
 }
+
+/* ── Also by Scaleflex — plugins catalog (self-contained, namespaced) ──────
+ *  Ported 1:1 from the marketing design. Vars scoped to .sfx-also so the block
+ *  drops into any repo without touching the host's global :root or .demo-* CSS.
+ * ------------------------------------------------------------------------- */
+.sfx-also {
+  --sfx-accent: #00d4aa;
+  --sfx-primary-light: #2c99ff;
+  --sfx-surface: #0a0e27;
+  background: var(--sfx-surface);
+  color: #fff;
+  padding: 80px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.sfx-also::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 45% 55% at 25% 25%, rgba(0, 212, 170, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 78% 30%, rgba(44, 153, 255, 0.09) 0%, transparent 60%);
+  pointer-events: none;
+}
+/* Thin gradient separator at the bottom edge (blends into the footer below). */
+.sfx-also::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  max-width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+  pointer-events: none;
+}
+
+.sfx-also-head {
+  max-width: 680px;
+  margin: 0 auto 36px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sfx-also-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sfx-accent);
+  margin-bottom: 14px;
+}
+.sfx-also-head h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 14px;
+}
+.sfx-also-head p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sfx-also-cols {
+  max-width: 1215px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+  align-items: stretch;
+}
+.sfx-col {
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 20px 20px 12px;
+}
+.sfx-col--sf { border-color: rgba(0, 212, 170, 0.16); }
+.sfx-col--ci { border-color: rgba(44, 153, 255, 0.18); }
+
+.sfx-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; padding: 0 8px; }
+.sfx-col-badge { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.sfx-col--sf .sfx-col-badge { background: var(--sfx-accent); box-shadow: 0 0 0 4px rgba(0, 212, 170, 0.16); }
+.sfx-col--ci .sfx-col-badge { background: var(--sfx-primary-light); box-shadow: 0 0 0 4px rgba(44, 153, 255, 0.16); }
+.sfx-col-title { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
+.sfx-col-count {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.sfx-col-ns {
+  font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+.sfx-col--sf .sfx-col-ns { color: var(--sfx-accent); background: rgba(0, 212, 170, 0.08); border-color: rgba(0, 212, 170, 0.22); }
+.sfx-col--ci .sfx-col-ns { color: var(--sfx-primary-light); background: rgba(44, 153, 255, 0.08); border-color: rgba(44, 153, 255, 0.22); }
+.sfx-col-sub { font-size: 13px; color: rgba(255, 255, 255, 0.42); padding: 0 8px; margin-bottom: 10px; }
+
+.sfx-list-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 16px; }
+
+.sfx-plugin-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  padding: 9px 8px;
+  border-radius: 11px;
+  text-decoration: none;
+  transition: background 160ms ease;
+  min-width: 0;
+}
+.sfx-plugin-item:hover { background: rgba(255, 255, 255, 0.045); }
+.sfx-plugin-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(140deg, rgba(44, 153, 255, 0.14) 0%, rgba(0, 212, 170, 0.09) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.sfx-col--sf .sfx-plugin-icon { color: var(--sfx-accent); }
+.sfx-col--ci .sfx-plugin-icon { color: var(--sfx-primary-light); }
+.sfx-plugin-icon svg { width: 18px; height: 18px; }
+.sfx-plugin-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.sfx-plugin-item:hover .sfx-plugin-name { color: #fff; }
+.sfx-plugin-arrow { margin-left: auto; color: rgba(255, 255, 255, 0.2); transition: color 160ms ease, transform 160ms ease; flex-shrink: 0; }
+.sfx-plugin-item:hover .sfx-plugin-arrow { transform: translateX(2px); }
+.sfx-col--sf .sfx-plugin-item:hover .sfx-plugin-arrow { color: var(--sfx-accent); }
+.sfx-col--ci .sfx-plugin-item:hover .sfx-plugin-arrow { color: var(--sfx-primary-light); }
+
+/* Collapse to a single column at the SAME width the footer does (≤960px) and
+   share its 24px side padding, so the bottom plugins card is full-width and its
+   left edge lines up with the footer's RESOURCES column directly below it. */
+@media (max-width: 960px) {
+  .sfx-also { padding: 48px 24px; }
+  .sfx-also-cols { grid-template-columns: 1fr; gap: 18px; }
+  .sfx-list-2col { grid-template-columns: 1fr; }
+}
+
+
